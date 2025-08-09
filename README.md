@@ -81,6 +81,8 @@ poster:
 - `auto-poster-tracker` worksheet to receive logs (optional header row):
   - `Content, Type, Details, Status, Post date, Notes, Run ID`
 
+Example Google Sheet (layout reference): [auto-poster-tracker-example](https://docs.google.com/spreadsheets/d/1DYLijtg_jSyutX9quIus1zLVdC8z6pfoRoqeziLEktI/edit?usp=sharing)
+
 3. Run it:
 
 ```bash
