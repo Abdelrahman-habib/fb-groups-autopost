@@ -1,0 +1,69 @@
+# Project-specific configs/secrets (keep these out of VCS)
+**/service-account-key.json
+config.yaml
+config.local.yaml
+config.dev.yaml
+config.test.yaml
+config.prod.yaml
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+
+# Packaging / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+.tox/
+.nox/
+
+# Type checkers / linters
+.mypy_cache/
+.pytype/
+.pyre/
+.ruff_cache/
+
+# IDE/editor
+.idea/
+.vscode/
+*.code-workspace
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Selenium / WebDriver caches
+.wdm/
+webdriver/
+drivers/
+
+# Logs
+*.log
+logs/

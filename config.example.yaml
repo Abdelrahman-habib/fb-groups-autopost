@@ -1,0 +1,20 @@
+sheets:
+  service_account_file: ./service-account-key.json
+  spreadsheet_id: your-spreadsheet-id
+  tracker_sheet: auto-poster-tracker
+  groups_sheet: Groups
+
+browser:
+  edge_profile_dir: "E:/selnuim-profiles"
+  edge_profile_name: "Profile 4"
+
+poster:
+  text: |
+    Your post text here...
+  image_paths:
+    - F:/path/to/image1.jpg
+    - F:/path/to/image2.jpg
+  filter_tags:
+    - octobor
+    - studio
+    - rent
