@@ -5,13 +5,14 @@ sheets:
   groups_sheet: Groups
 
 browser:
-  edge_profile_dir: "E:/selnuim-profiles"
-  edge_profile_name: "Profile 4"
+  edge_profile_dir: "C:/Users/yourusername/AppData/Local/Microsoft/Edge/User Data"
+  edge_profile_name: "Default"
   headless: false
 
 poster:
   text: |
     Your post text here...
+    this is a new line
   image_paths:
     - F:/path/to/image1.jpg
     - F:/path/to/image2.jpg
