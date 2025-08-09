@@ -16,6 +16,7 @@ class SheetsConfig:
 class BrowserConfig:
     edge_profile_dir: str
     edge_profile_name: str = "Default"
+    headless: bool = False
 
 
 @dataclass

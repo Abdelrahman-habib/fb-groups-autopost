@@ -7,6 +7,7 @@ sheets:
 browser:
   edge_profile_dir: "E:/selnuim-profiles"
   edge_profile_name: "Profile 4"
+  headless: false
 
 poster:
   text: |
