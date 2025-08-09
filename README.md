@@ -1,5 +1,7 @@
 ## fb-groups-poster
 
+> Status: Proof of Concept (POC). This tool is for experimentation/demos, not production use. Expect breaking changes and FB UI fragility.
+
 Automate posting to Facebook Groups using your Microsoft Edge profile, with Google Sheets for group selection and run tracking. Provides a clean CLI with stage spinners, a progress bar (tqdm) with ETA, and optional verbose logs.
 
 ### Features
