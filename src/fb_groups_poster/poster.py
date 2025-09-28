@@ -3,6 +3,7 @@ from __future__ import annotations
 import time
 import uuid
 from typing import List
+import re
 import logging
 from datetime import datetime
 
@@ -49,19 +50,45 @@ def post_to_group(driver, wait: WebDriverWait, client: SheetsClient, group_url: 
         create_post_input.click()
 
         # text area
-        text_area_selectors = [
-            "//div[@role='textbox' and @contenteditable='true' and @aria-placeholder='Create a public post…']",
-            "//div[@role='textbox' and @contenteditable='true' and @aria-placeholder='Write something...']",
-            "//div[@role='textbox' and @contenteditable='true' and contains(@aria-placeholder, 'Write something')]",
-            "//div[@role='textbox' and @contenteditable='true' and contains(@aria-placeholder, 'Create a public post')]",
+        # Python-side regex matching on aria-placeholder for robustness
+        regex_patterns = [
+            re.compile(r"write\s+something", re.I),
+            re.compile(r"create\s+.*\s+post", re.I),
+            re.compile(r"create\s+a\s+public\s+post", re.I),
         ]
         text_area = None
-        for sel in text_area_selectors:
-            try:
-                text_area = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, sel)))
-                break
-            except Exception:
-                continue
+        try:
+            # Broad query to collect possible editable textboxes
+            candidates = WebDriverWait(driver, 10).until(
+                EC.presence_of_all_elements_located(
+                    (By.XPATH, "//div[@role='textbox' and @contenteditable='true']")
+                )
+            )
+            for el in candidates:
+                placeholder = el.get_attribute("aria-placeholder") or ""
+                for pat in regex_patterns:
+                    if pat.search(placeholder):
+                        text_area = el
+                        break
+                if text_area:
+                    break
+        except Exception:
+            text_area = None
+        # Fallback to a few XPath contains selectors if regex approach fails
+        if not text_area:
+            fallback_selectors = [
+                "//div[@role='textbox' and @contenteditable='true' and contains(@aria-placeholder, 'Write something')]",
+                "//div[@role='textbox' and @contenteditable='true' and contains(@aria-placeholder, 'Create a public post')]",
+            ]
+            for sel in fallback_selectors:
+                try:
+                    text_area = WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.XPATH, sel))
+                    )
+                    if text_area:
+                        break
+                except Exception:
+                    continue
         if not text_area:
             raise RuntimeError("Text area not found")
         text_area.click()
