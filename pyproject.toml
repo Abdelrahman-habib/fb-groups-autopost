@@ -24,5 +24,9 @@ dependencies = [
 [project.scripts]
 fbpost = "fb_groups_poster.cli:main"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pytest-mock = "^3.14.0"
+
 [tool.setuptools.packages.find]
 where = ["src"]
